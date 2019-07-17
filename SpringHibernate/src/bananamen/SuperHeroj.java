@@ -5,12 +5,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 @Entity
+@Component
 public class SuperHeroj {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idHero;
+	@Value("${superheroj.ime}")
 	private String heroName;
+	@Value("superheroj.magija")
 	private String magic;
 	
 	
