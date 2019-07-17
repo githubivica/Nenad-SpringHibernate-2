@@ -15,14 +15,17 @@
         >
 	
 	<context:component-scan base-package="bananamen"/>
-	<context:property-placeholder location="classpath:superheroj.properties"/>
+	<context:property-placeholder
+    location="classpath:superheroj.properties,
+              classpath:baza.properties,"
+    ignore-unresolvable="true"/>
 	
     <!-- DataSource configuration -->
     <bean id = "dataSource" class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
-    	<property name = "driverClassName" value = "com.mysql.cj.jdbc.Driver"/>
-	   	<property name = "url" value = "jdbc:mysql://localhost:3306/superheroj?useSSL=false"/>
-	   	<property name = "username" value = "root"/>
-	   	<property name = "password" value = "root"/>
+    	<property name = "driverClassName" value = "${baza.driver}"/>
+	   	<property name = "url" value = "${baza.url}"/>
+	   	<property name = "username" value = "${baza.username}"/>
+	   	<property name = "password" value = "${baza.password}"/>
     </bean>
    
     <!-- Hibarnate configuration Session Factory -->
